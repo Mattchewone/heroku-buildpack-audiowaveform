@@ -1,4 +1,4 @@
-Heroku buildpack: lame
+Heroku buildpack: audiowaveform
 =======================
 
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for using audiowaveform in your project.  
