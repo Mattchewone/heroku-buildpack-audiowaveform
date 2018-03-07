@@ -19,5 +19,5 @@ curl -L --silent $DOWNLOAD_URL | tar xz
 echo "exporting PATH and LIBRARY_PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/audiowaveform"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:vendor/audiowaveform"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/audiowaveform"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:vendor/audiowaveform/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/audiowaveform/lib"' >> $PROFILE_PATH
