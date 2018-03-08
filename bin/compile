@@ -4,20 +4,23 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Installing audiowaveform"
+echo "-----> Installing audiowaveform and lame"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://github.com/Mattchewone/heroku-buildpack-audiowaveform/raw/master/audiowaveform.tar.gz"
+DOWNLOAD_URL_AUDIOWAVEFORM="https://github.com/Mattchewone/heroku-buildpack-audiowaveform/raw/master/audiowaveform.tar.gz"
+DOWNLOAD_URL_LAME="https://github.com/Mattchewone/heroku-buildpack-audiowaveform/raw/master/lame.tar.gz"
 
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+echo "DOWNLOAD_URL_AUDIOWAVEFORM = " $DOWNLOAD_URL_AUDIOWAVEFORM | indent
+echo "DOWNLOAD_URL_LAME = " $DOWNLOAD_URL_LAME | indent
 
 cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
+curl -L --silent $DOWNLOAD_URL_AUDIOWAVEFORM | tar xz
+curl -L --silent $DOWNLOAD_URL_LAME | tar xz
 
 echo "exporting PATH and LIBRARY_PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/audiowaveform"
+PROFILE_PATH="$BUILD_DIR/.profile.d/audiowaveform.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:vendor/audiowaveform/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/audiowaveform/lib"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:$HOME/vendor/audiowaveform/bin:$HOME/vendor/lame/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/audiowaveform/lib:$HOME/vendor/lame/lib"' >> $PROFILE_PATH
