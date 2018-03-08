@@ -1,6 +1,9 @@
 Heroku buildpack: audiowaveform
 =======================
 
+# NOTE: THIS IS NOT CURRENTLY WORKING!
+## This is not adding the audiowaveform binary
+
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for using audiowaveform in your project.  
 It doesn't do anything else, so to actually compile your app you should use [heroku-buildpack-multi](https://github.com/ddollar/heroku-buildpack-multi) to combine it with a real buildpack.
 
