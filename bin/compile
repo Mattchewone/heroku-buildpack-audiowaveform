@@ -6,6 +6,7 @@ indent() {
 
 echo "-----> Installing audiowaveform and lame"
 BUILD_DIR=$1
+ENV_DIR=$3
 VENDOR_DIR="vendor"
 DOWNLOAD_URL_AUDIOWAVEFORM="https://github.com/Mattchewone/heroku-buildpack-audiowaveform/raw/master/audiowaveform.tar.gz"
 DOWNLOAD_URL_LAME="https://github.com/Mattchewone/heroku-buildpack-audiowaveform/raw/master/lame.tar.gz"
@@ -24,3 +25,6 @@ PROFILE_PATH="$BUILD_DIR/.profile.d/audiowaveform.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:$HOME/vendor/audiowaveform/bin:$HOME/vendor/lame/bin"' >> $PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/audiowaveform/lib:$HOME/vendor/lame/lib"' >> $PROFILE_PATH
+
+. $PROFILE_PATH
+echo $LD_LIBRARY_PATH >> $ENV_DIR/LD_LIBRARY_PATH
