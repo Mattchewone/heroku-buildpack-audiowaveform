@@ -23,8 +23,8 @@ curl -L --silent $DOWNLOAD_URL_LAME | tar xz
 echo "exporting PATH and LIBRARY_PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/audiowaveform.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:$HOME/vendor/audiowaveform/bin:$HOME/vendor/lame/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/audiowaveform/lib:$HOME/vendor/lame/lib"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:vendor/audiowaveform/bin:vendor/lame/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/audiowaveform/lib:vendor/lame/lib"' >> $PROFILE_PATH
 
 . $PROFILE_PATH
 echo $LD_LIBRARY_PATH >> $ENV_DIR/LD_LIBRARY_PATH
